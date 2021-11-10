@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  let weatherData = {
+ const [city, setCity] = useState();
+ const [weatherData, setWeatherData] = useState(
+  { 
     city: "New York",
     temperature: 19,
     date: "Tuesday 10:00",
@@ -10,7 +13,34 @@ export default function Weather() {
     imgUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
     humidity: 80,
     wind: 10
-  };
+  }
+ );
+
+  function search(city) {
+    let apiKey = "9450c4e093311119f00946463ff53dcd";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then((response)=>{
+      getForcast(response.data.coord);
+    });
+  }
+
+  function getForcast(coordinates) {
+    console.log(coordinates);
+    let apiKey = "9450c4e093311119f00946463ff53dcd";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    console.log(apiUrl);
+    axios.get(apiUrl).then((response)=>{
+      setWeatherData({
+        city: city,
+        temperature: response.data.current.temp,
+        date: "Tuesday 10:00",
+        description: response.data.current.weather[0].description,
+        imgUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
+        humidity: response.data.current.humidity,
+        wind: response.data.current.wind_deg
+      })
+    });
+  }
 
   return (
     <div className="Weather">
@@ -20,13 +50,20 @@ export default function Weather() {
             <input
               type="search"
               placeholder="Type a city.."
+              value={city}
+              onChange={(event)=>{
+                setCity(event.target.value);
+              }}
               className="form-control"
               autoComplete="off"
             />
           </div>
           <div className="col-3">
             <input
-              type="submit"
+              type="submit" onClick={(event)=>{ 
+               event.preventDefault();
+               search(city); 
+              }}
               value="Search"
               className="btn btn-primary w-100"
             />
