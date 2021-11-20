@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 import "./Weather.css";
+import WeatherIcon from "./WeatherIcon";
 
 export default function Weather() {
  const [city, setCity] = useState();
@@ -28,7 +29,7 @@ export default function Weather() {
         temperature: Math.round(response.data.main.temp),
         date: moment().format('MMMM Do YYYY, h:mm:ss a'),
         description: response.data.weather[0].description,
-        imgUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+        imgUrl: response.data.weather[0].icon,
         humidity: response.data.main.humidity,
         wind: response.data.wind.speed
       })
@@ -80,11 +81,11 @@ export default function Weather() {
       <div className="row">
         <div className="col-6">
           <div className="clearfix weather-temperature">
-            <img
-              src={weatherData.imgUrl}
-              alt={weatherData.description}
-              className="float-left"
-            />
+          <div className="float-left">
+          <WeatherIcon 
+              code={weatherData.imgUrl}
+              alt={weatherData.description} />
+            </div>
             <div className="float-left">
               <strong>{formattedTemperature}</strong>
               <span className="units">
