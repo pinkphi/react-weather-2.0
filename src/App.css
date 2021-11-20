@@ -80,4 +80,9 @@
   text-transform: capitalize;
 }
 
+.App footer {
+  font-size: 11px;
+  margin: 10px auto;
+}
+
 
