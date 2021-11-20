@@ -54,6 +54,7 @@ export default function Weather() {
                 setCity(event.target.value);
               }}
               className="form-control"
+              autoFocus="on"
               autoComplete="off"
             />
           </div>

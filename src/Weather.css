@@ -1,7 +1,11 @@
 .Weather {
-    padding: 20px;
+    font-family: arial, sans-serif;
+    margin: 30px auto;
+    max-width: 600px;
+    padding: 16px;
     border: 1px solid #dadde1;
-    border-radius: 5px;
+    border-radius: 4px;
+    
   }
   
   .Weather .overview {

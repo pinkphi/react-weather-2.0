@@ -1,71 +1,72 @@
-body {
+.App {
   font-family: arial, sans-serif;
+  margin: 30px auto;
+  max-width: 600px;
 }
-.weather-app-wrapper {
+.App .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
 }
-.weather-app {
+.App .weather-app {
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 5px;
 }
-.overview {
+.App .overview {
   margin-bottom: 20px;
 }
-.weather-temperature img {
+.App .weather-temperature img {
   margin-right: 5px;
   height: 64px;
   width: 64px;
 }
-.weather-temperature strong {
+.App .weather-temperature strong {
   color: rgb(33, 33, 33);
   font-size: 64px;
   font-weight: 64px;
   line-height: 1;
 }
-.weather-temperature .units {
+.App .weather-temperature .units {
   position: relative;
   top: -32px;
 }
-
-.weather-temperature .active {
+.App .weather-temperature .active {
   color: rgb(33, 33, 33);
   cursor: default;
 }
 
-.weather-temperature .active:hover {
+.App .weather-temperature .active:hover {
   text-decoration: none;
 }
 
-.weather-forecast {
+.App .weather-forecast {
   margin-top: 20px;
   text-align: center;
   color: #000;
 }
-.weather-forecast-date {
+.App .weather-forecast-date {
   font-size: 16px;
   opacity: 0.5;
 }
-.weather-forecast-temperature-min {
+.App .weather-forecast-temperature-min {
   opacity: 0.5;
 }
-.weather-temperature {
+.App .weather-temperature {
   font-size: 13px;
 }
 
-h1 {
+.App h1 {
   color: #878787;
   font-size: 24px;
   font-weight: 100;
   line-height: 26px;
   margin-bottom: 0;
 }
-ul {
+.App ul {
   margin: 0;
   padding: 0;
 }
-li {
+.App li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -75,10 +76,8 @@ li {
   line-height: 16px;
 }
 
-li:first-letter {
+.App li:first-letter {
   text-transform: capitalize;
 }
 
-.App {
-  margin: 20px;
-}
+
