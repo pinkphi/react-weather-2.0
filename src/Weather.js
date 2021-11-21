@@ -3,6 +3,7 @@ import axios from "axios";
 import moment from "moment";
 import "./Weather.css";
 import WeatherIcon from "./WeatherIcon";
+import WeatherForecast from "./WeatherForecast"
 
 export default function Weather() {
  const [city, setCity] = useState();
@@ -10,6 +11,7 @@ export default function Weather() {
  const [weatherData, setWeatherData] = useState(
   { 
     city: "New York",
+    coordinates: 74,
     temperature: 19,
     date: moment().format('MMMM Do YYYY, h:mm:ss a'),
     description: "Cloudy",
@@ -26,12 +28,13 @@ export default function Weather() {
     axios.get(apiUrl).then((response)=>{
       setWeatherData({
         city: response.data.name,
+        coordinates: response.data.coord,
         temperature: Math.round(response.data.main.temp),
         date: moment().format('MMMM Do YYYY, h:mm:ss a'),
         description: response.data.weather[0].description,
         imgUrl: response.data.weather[0].icon,
         humidity: response.data.main.humidity,
-        wind: response.data.wind.speed
+        wind: response.data.wind.speed,
       })
     });
   }
@@ -84,7 +87,8 @@ export default function Weather() {
           <div className="float-left">
           <WeatherIcon 
               code={weatherData.imgUrl}
-              alt={weatherData.description} />
+              alt={weatherData.description}
+              size={52} />
             </div>
             <div className="float-left">
               <strong>{formattedTemperature}</strong>
@@ -110,6 +114,7 @@ export default function Weather() {
           </ul>
         </div>
       </div>
+      <WeatherForecast coordinates={weatherData.coordinates} />
     </div>
   );
 }

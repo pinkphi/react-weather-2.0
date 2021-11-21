@@ -1,0 +1,10 @@
+.WeatherForecast {
+    font-family: arial, sans-serif;
+    color: rgb(135, 135 ,135);
+    text-align: center;
+}
+
+.WeatherForecast-temperature-min {
+    opacity: 0.6;
+    margin-left: 5px;
+}
