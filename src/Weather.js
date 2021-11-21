@@ -69,7 +69,7 @@ export default function Weather() {
                search(city); 
               }}
               value="Search"
-              className="btn btn-primary w-100"
+              className="btn btn-primary w-80"
             />
           </div>
         </div>
